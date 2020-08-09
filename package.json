@@ -8,19 +8,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PMHStudio/wait-thats-illegal-embed.git"
+    "url": "git+https://github.com/pmh-only/wait-thats-illegal-embed.git"
   },
   "author": "PMH",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PMHStudio/wait-thats-illegal-embed/issues"
+    "url": "https://github.com/pmh-only/wait-thats-illegal-embed/issues"
   },
-  "homepage": "https://github.com/PMHStudio/wait-thats-illegal-embed#readme",
+  "homepage": "https://github.com/pmh-only/wait-thats-illegal-embed#readme",
   "dependencies": {
-    "cors": "^2.8.5",
     "crypto-random-string": "^3.1.0",
-    "ejs": "^3.0.1",
+    "ejs": "^3.1.3",
     "express": "^4.17.1",
-    "uuid": "^7.0.1"
+    "knex": "^0.21.2",
+    "mysql": "^2.18.1"
   }
 }

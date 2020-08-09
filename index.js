@@ -1,11 +1,8 @@
-const register = require('./functions/register')
-const apiRouter = require('./router/apiRouter')
+const app = require('./functions/listen')
+const db = require('./functions/database')
+
 const webRouter = require('./router/webRouter')
+const apiRouter = require('./router/apiRouter')
 
-module.exports = { _root: '/embed', _socket: false, _cors: true, _parser: ['json'], ready, static: '/src' }
-
-function ready (app) {
-  console.log('embed is loaded')
-  apiRouter(app, register)
-  webRouter(app, register)
-}
+webRouter(app, db)
+apiRouter(app, db)

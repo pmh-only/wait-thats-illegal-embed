@@ -1,0 +1,31 @@
+.bg-embed {
+  background-color: #23272A;
+}
+
+.bg-discord {
+  background-color: #2C2F33;
+}
+
+.bg-accent {
+  background-color: #7289DA;
+}
+
+.fg-accent {
+  color: #7289DA;
+}
+
+.form-outline .form-control:focus ~ .form-label {
+  color: #7289DA !important;
+}
+
+.form-outline .form-control:focus ~ .form-notch .form-notch-leading {
+  border-color: #7289DA !important;
+}
+
+.form-outline .form-control:focus ~ .form-notch .form-notch-middle {
+  border-color: #7289DA !important;
+}
+
+.form-outline .form-control:focus ~ .form-notch .form-notch-trailing {
+  border-color: #7289DA !important;
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/simple-scrollbar@latest/simple-scrollbar.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-scrollbar@latest/simple-scrollbar.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/1.0.0-beta1/mdb.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/colors.css">
+    <link rel="stylesheet" href="/src/fonts.css">
+    <link rel="stylesheet" href="/src/etc.css">
+    <title>Embed Maker - Edit mode</title>
+  </head>
+  <body class="bg-dark h-100">
+    <script>0</script>
+    <div class="p-3 h-100">
+      <div class="row h-100">
+        <div class="col-lg-6 h-100 mb-3">
+          <div class="card bg-discord text-white h-100">
+            <div class="card-body">
+              <h5 class="card-title fg-accent logo">Discord Embed Maker</h5>
+              <form class="pt-2" action="/api/create" method="get">
+                <div class="form-outline form-white mb-4">
+                  <input type="text" name="header" id="header" class="form-control" value="<%= embed.header %>" />
+                  <label class="form-label" for="header">Header</label>
+                </div>
+                <div class="form-outline form-white mb-4">
+                  <input type="text" name="title" id="title" class="form-control" value="<%= embed.title %>" />
+                  <label class="form-label" for="title">Title</label>
+                </div>
+                <div class="form-outline form-white mb-3">
+                  <textarea type="text" name="description" id="description" class="descarea form-control" rows="4"><%= embed.description %></textarea>
+                  <label class="form-label" for="description">Description</label>
+                </div>
+                <img class="img w-25 mb-4" src="<%= embed.image %>">
+                <div class="row mb-4">
+                  <div class="col-sm-6">
+                    <div class="form-outline form-white">
+                      <input type="text" name="image" id="image" class="form-control" value="<%= embed.image %>" />
+                      <label class="form-label" for="image">Image</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="btn-group">
+                      <input type="radio" class="btn-check" name="bigimg" id="bigimg-f" autocomplete="off" value="false" <%= embed.bigimg ? '' : 'checked' %>/>
+                      <label class="btn btn-light" for="bigimg-f">Thumbnail</label>
+                    
+                      <input type="radio" class="btn-check" name="bigimg" id="bigimg-t" autocomplete="off" value="true" <%= !embed.bigimg ? '' : 'checked' %>/>
+                      <label class="btn btn-light" for="bigimg-t">Large Image</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <div class="col-sm-6">
+                    <div class="form-outline form-white">
+                      <input type="text" id="color" name="color" class="form-control" value="<%= embed.color %>">
+                      <label class="form-label" for="color">Color</label>
+                      <div class="color-picker"></div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 h-100">
+          <div class="card bg-discord text-white h-100">
+            <div class="card-body">
+              <h5 class="card-title">Preview</h5>
+                <p class="card-text">
+                  <div class="flex-vertical whitney theme-dark">
+                    <div class="chat flex-vertical flex-spacer">
+                      <div class="content flex-spacer flex-horizontal">
+                        <div class="message-group hide-overflow ">
+                          <div class="avatar-large animate" style="background-image: url(&quot;https://cdn.discordapp.com/embed/avatars/0.png&quot;);"></div>
+                          <div class="comment">
+                            <h2 style="line-height: 16px;">
+                              <strong class="user-name">Discord User</strong>
+                              <span class="highlight-separator"> - </span>
+                              <span class="timestamp">Today at 10:51 PM</span>
+                            </h2>
+                            <div class="message-text">
+                              <a class="r-url" target="_blank" href="https://e.pmh.codes/<%= embed.id %>">https://e.pmh.codes/<%= embed.id %></a>
+                            <div class="embed-wrapper">
+                              <div class="r-color embed-color-pill" style="background-color: <%= embed.color %>"></div>
+                              <div class="embed embed-rich">
+                                <div class="embed-content">
+                                  <div class="embed-content-inner">
+                                    <div class="embed-author">
+                                      <a class="r-header embed-author-name"><%= embed.header %></a>
+                                    </div>
+                                    <a class="r-url r-title embed-title" target="_blank" rel="noreferrer" href="https://e.pmh.codes/<%= embed.id %>"><%= embed.title %></a>
+                                    <div class="r-description embed-description markup"><%= embed.description %></div>
+                                    <a class="embed-thumbnail embed-thumbnail-rich"><img class="r-image w-100" role="presentation" src="<%= embed.bigimg ? embed.image : '' %>"></a>
+                                  </div>
+                                  <img src="<%= !embed.bigimg ? embed.image : '' %>" role="presentation" class="r-image embed-rich-thumb" style="max-width: 80px; max-height: 80px;">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <h5 class="card-title mt-5">URL</h5>
+                <a class="r-url" target="_blank" href="https://e.pmh.codes/<%= embed.id %>">https://e.pmh.codes/<%= embed.id %></a>
+
+
+                <h5 class="card-title mt-5">HTML Meta Code</h5>
+                <code class="r-code">
+                  not rendered
+                </code>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/1.0.0-beta1/mdb.min.js"></script>
+    <script src="/src/render.js"></script>
+    <script src="/src/ajax.js"></script>
+    <script src="/src/interact.js"></script>
+  </body>
+</html>

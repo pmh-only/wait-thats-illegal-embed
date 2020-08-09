@@ -1,28 +1,25 @@
-<meta http-equiv="refresh" content="0; url=/embed/create">
-<% if (embed.success) { %>
-<meta name="theme-color" content="<%= embed.data.color %>">
-
-<meta name="og:site_name" content="<%= embed.data.top %>">
-
-<meta property="og:title" content="<%= embed.data.middle %>">
-<meta property="og:description"content="<%= embed.data.bottom %>">
-
-<meta property="og:image" content="<%= embed.data.image %>">
-<meta property="twitter:image:src" content="<%= embed.data.image %>">
-<link rel="shortcut icon" href="<%= embed.data.image %>" type="image/x-icon">
-
-<% } else { %>
-<meta name="theme-color" content="#FF0000">
-
-<meta name="og:site_name" content="Tritium Networks">
-
-<meta property="og:title" content="임배드를 찾을 수 없습니다">
-<meta property="og:description"content="Url을 다시한번 확인해보세요">
-
-<meta property="og:image" content="https://image.freepik.com/free-vector/x-letter_53876-60368.jpg">
-<meta property="twitter:image:src" content="https://image.freepik.com/free-vector/x-letter_53876-60368.jpg">
-<link rel="shortcut icon" href="https://image.freepik.com/free-vector/x-letter_53876-60368.jpg" type="image/x-icon">
-
-<% } %>
-
-<span style="color: #fc89c2;">❤</span> By Tritium Networks
+<html><head>
+  <title>Embed Maker - View mode</title>
+  <meta name="og:site_name" content="<%= embed.header %>">
+  <meta property="og:title" content="<%= embed.title %>">
+  <meta property="og:description" content="<%= embed.description %>">
+  <meta name="theme-color" content="<%= embed.color %>">
+  <meta property="og:image" content="<%= embed.image %>">
+  <meta name="twitter:card" content="<%= embed.bigimg ? 'summary_large_image' : 'summary' %>">
+  <style>.ad{width: 600px;height: 100px;border: 3px solid gray;text-align: center; padding: 30px;}</style>
+</head><body>
+  <div class="ad">
+    Google Ad here (5 sec.)
+  </div> ad skip: <span class="left">5</span> sec. left
+  <script>
+    let left = 5
+    setInterval(() => {
+      if (left < 1) return
+      left -= 0.1
+      document.getElementsByClassName('left')[0].innerHTML = Math.round(left * 10) / 10
+    }, 100)
+    setTimeout(() => {
+      window.location.replace("/edit/<%= id %>")
+    }, 5000)
+  </script>
+</body></html>

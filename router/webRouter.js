@@ -1,25 +1,22 @@
 const path = require('path').resolve()
-const { renderFile } = require('ejs')
+const { renderFile: render } = require('ejs')
 
-function fnc (app, register) {
-  app.get('/', (_req, res) => res.redirect('/embed/create'))
-  app.get('/create', (_req, res) => {
-    register.addCount()
-    renderFile(path + '/router/embed/page/create.ejs', { auth: register.createAuth(), count: register.getCount(), embCount: register.embCount() }, (err, str) => {
-      if (err) console.log(err)
-      else res.send(str)
-    })
+/**
+ * @param {import('express').Express} app
+ * @param {import('knex')} db
+ */
+module.exports = (app, db) => {
+  app.get('/',         async (  _, res) => res.redirect('/edit/-'))
+  app.get('/edit/:id', async (req, res) => {
+    let [ embed ] = await db.select('*').where('id', req.params.id).from('embeds')
+    if (!embed) embed = require('../presets/notfound.json')
+    const html = await render(path + '/page/editor.ejs', { embed }, { async: true })
+    res.send(html)
   })
-
-  app.get('/:eid', (req, res) => {
-    register.addCount()
-    if (!req.params.eid) return
-    const embed = register.getEmbed(req.params.eid)
-    renderFile(path + '/router/embed/page/embed.ejs', { embed }, (err, str) => {
-      if (err) console.log(err)
-      else res.send(str)
-    })
+  app.get('/:id', async (req, res) => {
+    let [ embed ] = await db.select('*').where('id', req.params.id).from('embeds')
+    if (!embed) embed = require('../presets/notfound.json')
+    const html = await render(path + '/page/embed.ejs', { embed, id: req.params.id }, { async: true })
+    res.send(html)
   })
 }
-
-module.exports = fnc
