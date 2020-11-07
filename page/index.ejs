@@ -12,6 +12,13 @@
     <link rel="stylesheet" href="/src/fonts.css">
     <link rel="stylesheet" href="/src/etc.css">
     <title>Embed Maker - Edit mode</title>
+    
+    <meta name="og:site_name" content="<%= embed.header %>">
+    <meta property="og:title" content="<%= embed.title %>">
+    <meta property="og:description" content="<%= embed.description %>">
+    <meta name="theme-color" content="<%= embed.color %>">
+    <meta property="og:image" content="<%= embed.image %>">
+    <meta name="twitter:card" content="<%= embed.bigimg ? 'summary_large_image' : 'summary' %>">
   </head>
   <body class="bg-dark h-100">
     <script>0</script>
