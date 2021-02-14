@@ -6,12 +6,18 @@
   <meta name="theme-color" content="<%= embed.color %>">
   <meta property="og:image" content="<%= embed.image %>">
   <meta name="twitter:card" content="<%= embed.bigimg ? 'summary_large_image' : 'summary' %>">
-  <style>.ad{width: 600px;height: 100px;border: 3px solid gray;text-align: center; padding: 30px;}</style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head><body>
-  <div class="ad">
-    Google Ad here (5 sec.)
-  </div> ad skip: <span class="left">5</span> sec. left
+  <ins class="adsbygoogle"
+  style="display:block"
+  data-ad-client="ca-pub-5402646688760293"
+  data-ad-slot="7618962343"
+  data-ad-format="auto"
+  data-full-width-responsive="true"></ins>
+  ad skip: <span class="left">5</span> sec. left
   <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+
     let left = 5
     setInterval(() => {
       if (left < 1) return
