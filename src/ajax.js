@@ -7,7 +7,7 @@ function ajaxSend () {
   xhr.onreadystatechange = () => {
     if(xhr.readyState !== 4) return
     if(xhr.status === 200) {
-      history.replaceState(null, document.getElementsByTagName("title")[0].innerHTML, '/' + JSON.parse(xhr.responseText).id)
+      history.replaceState(null, document.getElementsByTagName("title")[0].innerHTML, '/edit/' + JSON.parse(xhr.responseText).id)
       render(JSON.parse(xhr.responseText).id)
     }
   }

@@ -1,0 +1,25 @@
+<html><head>
+  <title>Embed Maker - View mode</title>
+  <meta name="og:site_name" content="<%= embed.header %>">
+  <meta property="og:title" content="<%= embed.title %>">
+  <meta property="og:description" content="<%= embed.description %>">
+  <meta name="theme-color" content="<%= embed.color %>">
+  <meta property="og:image" content="<%= embed.image %>">
+  <meta name="twitter:card" content="<%= embed.bigimg ? 'summary_large_image' : 'summary' %>">
+  <style>.ad{width: 600px;height: 100px;border: 3px solid gray;text-align: center; padding: 30px;}</style>
+</head><body>
+  <div class="ad">
+    Google Ad here (5 sec.)
+  </div> ad skip: <span class="left">5</span> sec. left
+  <script>
+    let left = 5
+    setInterval(() => {
+      if (left < 1) return
+      left -= 0.1
+      document.getElementsByClassName('left')[0].innerHTML = Math.round(left * 10) / 10
+    }, 100)
+    setTimeout(() => {
+      window.location.replace("/edit/<%= id %>")
+    }, 5000)
+  </script>
+</body></html>
